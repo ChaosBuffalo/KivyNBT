@@ -76,7 +76,7 @@ def load_mob_from_tag(tag):
                 pot['id'].value, pot['Amplifier'].value,
                 pot['Duration'].value,
                 ambient=pot['Ambient'].value,
-                show_particles=pot['ShowParticles']
+                show_particles=pot['ShowParticles'].value
                 ))
     if 'Passengers' in tag:
         passenger_tags = tag['Passengers']
@@ -306,16 +306,17 @@ class Mob():
     def add_data_to_tag(self, tag):
         tag.tags.append(TAG_String(name='id', value=self.mob_id))
         tag.tags.append(TAG_Float(name='Health', value=self.health))
-        tag.tags.append(TAG_Byte(name="Glowing", value=self.glowing))
-        tag.tags.append(TAG_Byte(name="Silent", value=self.silent))
-        tag.tags.append(TAG_Byte(name="LeftHanded", value=self.left_handed))
+        tag.tags.append(TAG_Byte(name="Glowing", value=int(self.glowing)))
+        tag.tags.append(TAG_Byte(name="Silent", value=int(self.silent)))
+        tag.tags.append(TAG_Byte(name="LeftHanded",
+            value=int(self.left_handed)))
         tag.tags.append(TAG_Byte(name="CanPickUpLoot",
-            value=self.can_pickup_loot))
+            value=int(self.can_pickup_loot)))
         tag.tags.append(TAG_Byte(name="CustomNameVisible",
-            value=self.custom_name_visible))
+            value=int(self.custom_name_visible)))
         tag.tags.append(TAG_Float(name="AbsorptionAmount",
             value=self.absorbtion_amount))
-        tag.tags.append(TAG_Short(name='Fire', value=self.fire_ticks))
+        tag.tags.append(TAG_Short(name='Fire', value=int(self.fire_ticks)))
         if self.custom_name is not None:
             tag.tags.append(
                 TAG_String(name='CustomName', value=self.custom_name))
@@ -421,7 +422,7 @@ class Attribute():
         tag.tags.append(TAG_String(name="Name",
                                    value=self.attribute_id))
         tag.tags.append(TAG_Double(name="Amount", value=self.value))
-        tag.tags.append(TAG_Int(name="Operation", value=self.op_choice))
+        tag.tags.append(TAG_Int(name="Operation", value=int(self.op_choice)))
         tag.tags.append(TAG_Long(name="UUIDLeast", value=self.low))
         tag.tags.append(TAG_Long(name="UUIDMost", value=self.high))
         if self.slot is not None:
@@ -498,12 +499,12 @@ class Effect():
 
     def getNBTTag(self):
         tag = TAG_Compound()
-        tag.tags.append(TAG_Byte(name="id", value=self.effect_id))
-        tag.tags.append(TAG_Byte(name="Amplifier", value=self.amplifier))
-        tag.tags.append(TAG_Int(name="Duration", value=self.duration))
-        tag.tags.append(TAG_Byte(name="Ambient", value=self.ambient))
+        tag.tags.append(TAG_Byte(name="id", value=int(self.effect_id)))
+        tag.tags.append(TAG_Byte(name="Amplifier", value=int(self.amplifier)))
+        tag.tags.append(TAG_Int(name="Duration", value=int(self.duration)))
+        tag.tags.append(TAG_Byte(name="Ambient", value=int(self.ambient)))
         tag.tags.append(
-            TAG_Byte(name="ShowParticles", value=self.show_particles))
+            TAG_Byte(name="ShowParticles", value=int(self.show_particles)))
         return tag
 
 
@@ -580,6 +581,6 @@ class Enchant():
 
     def getNBTTag(self):
         tag = TAG_Compound()
-        tag.tags.append(TAG_Short(name="id", value=self.e_id))
-        tag.tags.append(TAG_Short(name="lvl", value=self.level))
+        tag.tags.append(TAG_Short(name="id", value=int(self.e_id)))
+        tag.tags.append(TAG_Short(name="lvl", value=int(self.level)))
         return tag
