@@ -28,7 +28,7 @@ def get_tag_for_type(tag_type):
 
 
 def load_spawn_potential_from_tag(tag):
-    return SpawnPotential(load_mob_from_tag(tag['Properties']),
+    return SpawnPotential(load_mob_from_tag(tag['Entity']),
                           weight=tag['Weight'].value)
 
 def load_spawner_from_tag(tag):
@@ -563,11 +563,9 @@ class Spawner():
             for spawn_potential in self.spawn_potentials:
                 pot_tag = TAG_Compound()
                 pot_tag.tags.append(
-                    TAG_String(name="Type", value=spawn_potential.spawn_type))
-                pot_tag.tags.append(
                     TAG_Int(name="Weight", value=int(spawn_potential.weight)))
                 mob_tag = spawn_potential.mob.getNBTTag()
-                mob_tag.name = 'Properties'
+                mob_tag.name = 'Entity'
                 pot_tag.tags.append(mob_tag)
                 potentials_subtag.tags.append(pot_tag)
             tag.tags.append(potentials_subtag)
