@@ -1,0 +1,68 @@
+<PotionWidget>:
+    padding: 10
+    spacing: 10
+    size_hint: (1.0, None)
+    height: dp(80)
+    orientation: 'vertical'
+    current_duration: slider.current_value
+    BoxLayout:
+        spacing: 10
+        FlatLabel:
+            size_hint: (.5, 1.0)
+            text: root.name
+            font_ramp_tuple: ('potion_names', '1')
+            pos_hint: {'y': .00, 'x': .21}
+            theme: ('aqua', 'variant_1')
+            valign: 'middle'
+            halign: 'left'
+            text_size: self.size
+        FlatLabel:
+            size_hint: (.2, 1.0)
+            text: str(root.current)
+            font_ramp_tuple: ('potion_names', '1')
+            pos_hint: {'y': .00, 'x': .21}
+            theme: ('aqua', 'variant_1')
+            valign: 'middle'
+            halign: 'left'
+            text_size: self.size
+        FlatButton:
+            text: '-'
+            font_ramp_tuple: ('potion_b', '1')
+            theme: ('aqua', 'variant_1')
+            valign: 'middle'
+            halign: 'center'
+            text_size: self.size
+            size_hint: (.10, 1.0)
+            on_release: root.update_current(-1)
+            ripple_duration_in: .2
+            ripple_duration_out: .3
+        FlatButton:
+            text: '+'
+            font_ramp_tuple: ('potion_b', '1')
+            theme: ('aqua', 'variant_1')
+            valign: 'middle'
+            halign: 'center'
+            text_size: self.size
+            size_hint: (.10, 1.0)
+            on_release: root.update_current(1)
+            ripple_duration_in: .08
+            ripple_duration_out: .16
+        FlatButton:
+            text: 'x'
+            font_ramp_tuple: ('potion_b', '1')
+            theme: ('aqua', 'variant_1')
+            valign: 'middle'
+            halign: 'center'
+            text_size: self.size
+            size_hint: (.10, 1.0)
+            on_release: root.remove_self()
+            ripple_duration_in: .08
+            ripple_duration_out: .16
+    SliderWithValues:
+        minimum: root.minimum_duration
+        maximum: root.maximum_duration
+        step: 1.0
+        id: slider
+        size_hint: (1.0, None)
+        height: dp(30)
+        font_group_id: 'duration_sliders'

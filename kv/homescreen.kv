@@ -1,0 +1,31 @@
+<HomeScreen>:
+    BoxLayout:
+        size_hint: (0.8, .8)
+        pos_hint: {'x': .1, 'y': .1}
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        FlatButton:
+            font_ramp_tuple: ('home_screen', '1')
+            theme: ('aqua', 'variant_2')
+            valign: 'top'
+            halign: 'center'
+            text_size: self.size
+            text: 'Create Items'
+            on_release: app.change_screen('item_categories')
+        FlatButton:
+            font_ramp_tuple: ('home_screen', '1')
+            theme: ('aqua', 'variant_2')
+            valign: 'top'
+            halign: 'center'
+            text_size: self.size
+            text: 'Create Mobs'
+            on_release: app.change_screen('mob_types')
+        FlatButton:
+            font_ramp_tuple: ('home_screen', '1')
+            theme: ('aqua', 'variant_2')
+            valign: 'top'
+            halign: 'center'
+            text_size: self.size
+            text: 'Create Spawners'
+            on_release: app.open_create_spawner()

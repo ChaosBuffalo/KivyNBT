@@ -1,0 +1,19 @@
+<NamedValueSlider>:
+    orientation: 'horizontal'
+    current_value: value_slider.current_value
+    FlatLabel:
+        text: str(root.slider_name)
+        size_hint: (.25, 1.0)
+        font_ramp_tuple: (root.font_group_id + '_name', '1') if root.font_group_id != 'default' else ('default', '1')
+        text_size: self.size
+        theme: ('aqua', 'subtitles')
+        valign: 'middle'
+        halign: 'center'
+        shorten: True
+    SliderWithValues:
+        id: value_slider
+        minimum: root.minimum
+        maximum: root.maximum
+        step: root.step
+        font_group_id: root.font_group_id + '_slider' if root.font_group_id != 'default' else 'default'
+        size_hint: (.75, 1.0)

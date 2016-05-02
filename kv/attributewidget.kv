@@ -1,0 +1,117 @@
+<AttributeWidget>:
+    padding: 5
+    spacing: 5
+    orientation: 'vertical'
+    size_hint: (1.0, None)
+    height: dp(90)
+    value: slider.current_value
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(20)
+        text: root.name
+        font_ramp_tuple: ('attributes_title', '1')
+        theme: ('aqua', 'variant_1')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    SliderWithValues:
+        minimum: root.get_minimum_bound(root.operation, root.minimum)
+        maximum: root.get_maximum_bound(root.operation, root.maximum)
+        step: root.get_step(root.operation, root.step)
+        id: slider
+        size_hint: (1.0, None)
+        height: dp(30)
+        font_group_id: 'attribute_sliders'
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 5
+        spacing: 5
+        size_hint: (1.0, None)
+        height: dp(40)
+        FlatButton:
+            text: 'Op: ' + str(int(root.operation))
+            size_hint: (.3, 1.0)
+            font_ramp_tuple: ('enchant_b', '1')
+            theme: ('aqua', 'variant_1')
+            valign: 'middle'
+            halign: 'center'
+            text_size: self.size
+            ripple_duration_in: .08
+            ripple_duration_out: .16
+            on_release: root.open_op_choices()
+        FlatButton:
+            text: 'Slot:' + root.slot
+            size_hint: (.65, 1.0)
+            font_ramp_tuple: ('enchant_b', '1')
+            theme: ('aqua', 'variant_1')
+            valign: 'middle'
+            halign: 'center'
+            text_size: self.size
+            ripple_duration_in: .08
+            ripple_duration_out: .16
+            on_release: root.open_slot_choices()
+        FlatButton:
+            text: 'x'
+            size_hint: (.05, 1.0)
+            font_ramp_tuple: ('enchant_b', '1')
+            theme: ('aqua', 'variant_1')
+            valign: 'middle'
+            halign: 'center'
+            text_size: self.size
+            on_release: root.remove_self()
+            ripple_duration_in: .08
+            ripple_duration_out: .16
+
+
+<-AttributeWidgetNoSlot>:
+    padding: 5
+    spacing: 5
+    orientation: 'vertical'
+    size_hint: (1.0, None)
+    height: dp(90)
+    value: slider.current_value
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(20)
+        text: root.name
+        font_ramp_tuple: ('attributes_title', '1')
+        theme: ('aqua', 'variant_1')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    SliderWithValues:
+        minimum: root.get_minimum_bound(root.operation, root.minimum)
+        maximum: root.get_maximum_bound(root.operation, root.maximum)
+        step: root.get_step(root.operation, root.step)
+        id: slider
+        size_hint: (1.0, None)
+        height: dp(30)
+        font_group_id: 'attribute_sliders'
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 5
+        spacing: 5
+        size_hint: (.6, None)
+        height: dp(40)
+        FlatButton:
+            text: 'Op: ' + str(int(root.operation))
+            size_hint: (.8, 1.0)
+            font_ramp_tuple: ('enchant_b', '1')
+            theme: ('aqua', 'variant_1')
+            valign: 'middle'
+            halign: 'center'
+            text_size: self.size
+            ripple_duration_in: .08
+            ripple_duration_out: .16
+            on_release: root.open_op_choices()
+        FlatButton:
+            text: 'x'
+            size_hint: (.2, 1.0)
+            font_ramp_tuple: ('enchant_b', '1')
+            theme: ('aqua', 'variant_1')
+            valign: 'middle'
+            halign: 'center'
+            text_size: self.size
+            on_release: root.remove_self()
+            ripple_duration_in: .08
+            ripple_duration_out: .16

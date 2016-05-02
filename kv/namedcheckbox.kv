@@ -1,0 +1,21 @@
+<NamedCheckBox>:
+    orientation: 'horizontal'
+    is_checked: checkbox.active
+    spacing: 10
+    FlatLabel:
+        text: str(root.name)
+        size_hint: ((root.width - root.height)/ root.width, 1.0)
+        font_ramp_tuple: (root.font_group_id + '_name', '1') if root.font_group_id != 'default' else ('default', '1')
+        text_size: self.size
+        theme: ('aqua', 'subtitles')
+        valign: 'middle'
+        halign: 'right'
+        shorten: True
+    FlatCheckBox:
+        id: checkbox
+        size_hint: (None, .8)
+        pos_hint: {'y': .1}
+        ripple_duration_in: .2
+        ripple_duration_out: .3
+        width: self.height
+        theme: ('aqua', 'variant_1')

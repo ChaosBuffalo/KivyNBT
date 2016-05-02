@@ -1,0 +1,327 @@
+<MobItems>:
+    size_hint: (1.0, None)
+    height: self.minimum_height
+    ItemSlotWidget:
+        slot_name: 'MainHand'
+        font_group_id: 'item_slot_choices'
+        id: main_hand
+    ItemSlotWidget:
+        slot_name: 'OffHand'
+        font_group_id: 'item_slot_choices'
+        id: off_hand
+    ItemSlotWidget:
+        slot_name: 'Head'
+        font_group_id: 'item_slot_choices'
+        id: head
+    ItemSlotWidget:
+        slot_name: 'Chest'
+        font_group_id: 'item_slot_choices'
+        id: chest
+    ItemSlotWidget:
+        slot_name: 'Legs'
+        font_group_id: 'item_slot_choices'
+        id: legs
+    ItemSlotWidget:
+        slot_name: 'Feet'
+        font_group_id: 'item_slot_choices'
+        id: feet
+
+<CreateMobScreen>:
+    BoxLayout:
+        size_hint: (1.0, .8)
+        pos_hint: {'y': .15}
+        padding: 10
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: app.get_color(['Cyan', '800'])[0:3] + [.5]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        ScrollView:
+            scroll_timeout: 30
+            id: sv1
+            size_hint: (.5, 1.0)
+            canvas.before:
+                Color:
+                    rgba: app.get_color(['Cyan', '300'])[0:3] + [.75]
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            StackLayout:
+                size_hint: (1.0, None)
+                height: max(self.minimum_height, sv1.height)
+                padding: 10
+                spacing: 10
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Custom Name: '
+                    font_ramp_tuple: ('mob_panel_1', '1')
+                    pos_hint: {'y': .00, 'x': .21}
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                FloatLayout:
+                    size_hint: (1.0, None)
+                    height: dp(70)
+                    FlatTextInput:
+                        id: name_input
+                        size_hint: (.8, .8)
+                        pos_hint: {'x': .1, 'y': .1}
+                        hint_text: 'Custom Name'
+                        write_tab: False
+                        multiline: False
+                        background_color: (1., 1., 1., 0.)
+                        hint_text_color: app.get_color(['Cyan', '200'])[0:3] + [.5]
+                        font_size: dp(20)
+                        cursor_color: app.get_color(['Cyan', '100'])[0:3] + [.75]
+                        foreground_color: app.get_color(['BlueGrey', '900'])[0:3] + [.75]
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Health: '
+                    font_ramp_tuple: ('mob_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                SliderWithValues:
+                    minimum: 0
+                    maximum: 100
+                    id: health_slider
+                    size_hint: (1.0, None)
+                    height: dp(65)
+                    font_group_id: 'mob_panel_1_sliders'
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Absorbtion: '
+                    font_ramp_tuple: ('mob_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                SliderWithValues:
+                    minimum: 0
+                    maximum: 100
+                    id: absorbtion_slider
+                    size_hint: (1.0, None)
+                    height: dp(65)
+                    font_group_id: 'mob_panel_1_sliders'
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Fire Ticks: '
+                    font_ramp_tuple: ('mob_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                SliderWithValues:
+                    minimum: -10000
+                    maximum: 10000
+                    id: fire_ticks_slider
+                    size_hint: (1.0, None)
+                    height: dp(65)
+                    font_group_id: 'mob_panel_1_sliders'
+                NamedCheckBox:
+                    size_hint: (.9, None)
+                    height: dp(35)
+                    font_group_id: 'mob_panel'
+                    name: 'Custom Name Visible: '
+                    id: show_name
+                NamedCheckBox:
+                    size_hint: (.9, None)
+                    height: dp(35)
+                    font_group_id: 'mob_panel'
+                    name: 'Glowing: '
+                    id: glowing
+                NamedCheckBox:
+                    size_hint: (.9, None)
+                    height: dp(35)
+                    font_group_id: 'mob_panel'
+                    name: 'Left-Handed: '
+                    id: left_handed
+                NamedCheckBox:
+                    size_hint: (.9, None)
+                    height: dp(35)
+                    font_group_id: 'mob_panel'
+                    name: 'Silent: '
+                    id: silent
+                NamedCheckBox:
+                    size_hint: (.9, None)
+                    height: dp(35)
+                    font_group_id: 'mob_panel'
+                    name: 'Can Loot: '
+                    id: can_loot
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Passengers: '
+                    font_ramp_tuple: ('mob_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                FlatButton:
+                    size_hint: (.6, None)
+                    height: dp(30)
+                    text: 'Add Passenger'
+                    pos_hint: {'x': .3}
+                    font_ramp_tuple: ('mob_button', '1')
+                    theme: ('aqua', 'variant_2')
+                    valign: 'middle'
+                    halign: 'center'
+                    text_size: self.size
+                    on_release: root.load_passenger_mob()
+                StackLayout:
+                    size_hint: (1.0, None)
+                    height: self.minimum_height
+                    id: passenger_layout
+                    padding: 10
+                    spacing: 10
+
+        ScrollView:
+            scroll_timeout: 30
+            id: sv2
+            size_hint: (.5, 1.0)
+            canvas.before:
+                Color:
+                    rgba: app.get_color(['Cyan', '300'])[0:3] + [.75]
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            StackLayout:
+                size_hint: (1.0, None)
+                height: max(self.minimum_height, sv2.height)
+                padding: 10
+                spacing: 10
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Additional Options: '
+                    font_ramp_tuple: ('mob_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                StackLayout:
+                    size_hint: (1.0, None)
+                    height: self.minimum_height
+                    id: options_layout
+                    padding: 10
+                    spacing: 10
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Attributes: '
+                    font_ramp_tuple: ('mob_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                FlatButton:
+                    size_hint: (.6, None)
+                    height: dp(30)
+                    text: 'Add Attribute'
+                    pos_hint: {'x': .3}
+                    font_ramp_tuple: ('mob_button', '1')
+                    theme: ('aqua', 'variant_2')
+                    valign: 'middle'
+                    halign: 'center'
+                    text_size: self.size
+                    on_release: root.open_add_attributes()
+                StackLayout:
+                    size_hint: (1.0, None)
+                    height: self.minimum_height
+                    id: attribute_layout
+                    padding: 10
+                    spacing: 10
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Potion Effects: '
+                    font_ramp_tuple: ('mob_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                FlatButton:
+                    size_hint: (.6, None)
+                    height: dp(30)
+                    text: 'Add Effect'
+                    pos_hint: {'x': .3}
+                    font_ramp_tuple: ('mob_button', '1')
+                    theme: ('aqua', 'variant_2')
+                    valign: 'middle'
+                    halign: 'center'
+                    text_size: self.size
+                    on_release: root.open_add_potions()
+                StackLayout:
+                    size_hint: (1.0, None)
+                    height: self.minimum_height
+                    id: potion_layout
+                    padding: 10
+                    spacing: 10
+                StackLayout:
+                    size_hint: (1.0, None)
+                    height: self.minimum_height
+                    id: items_layout
+    Widget:
+        size_hint: (1.0, .1)
+        padding: 10
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: app.get_color(['Cyan', '800'])[0:3] + [.5]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    FlatButton:
+        size_hint: (.15, .08)
+        text: 'Back'
+        font_ramp_tuple: ('create_mob_back', '1')
+        theme: ('aqua', 'variant_2')
+        pos_hint: {'x' : .01, 'y': .01}
+        valign: 'middle'
+        halign: 'center'
+        text_size: self.size
+        on_release: app.change_screen('mob_types')
+    FlatLabel:
+        size_hint: (.3, .1)
+        text: root.mob_name
+        font_ramp_tuple: ('mob_name', '1')
+        pos_hint: {'y': .00, 'x': .185}
+        theme: ('aqua', 'variant_2')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    PixelImage:
+        source: root.mob_image
+        allow_stretch: True
+        size_hint: (None, None)
+        width: 64
+        height: 64
+        pos_hint: {'x': .50, 'y': ((root.height*.1 - 64) / root.height) /2.}
+    FlatButton:
+        size_hint: (.15, .08)
+        text: 'Save'
+        font_ramp_tuple: ('create_mob_back', '1')
+        theme: ('aqua', 'variant_2')
+        pos_hint: {'x' : .65, 'y': .01}
+        valign: 'middle'
+        halign: 'center'
+        text_size: self.size
+        on_release: root.save_file()
+    FlatButton:
+        size_hint: (.15, .08)
+        text: 'Load'
+        font_ramp_tuple: ('create_mob_back', '1')
+        theme: ('aqua', 'variant_2')
+        pos_hint: {'x' : .82, 'y': .01}
+        valign: 'middle'
+        halign: 'center'
+        text_size: self.size
+        on_release: root.load_file()

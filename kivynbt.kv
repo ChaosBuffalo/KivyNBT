@@ -1,0 +1,30 @@
+#:kivy 1.9.0
+
+KivyNBTRoot:
+    canvas.before:
+        Color:
+            rgba: app.get_color(['BlueGrey', '900'])
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    HomeScreen:
+        name: 'home'
+    ItemTypesScreen:
+        name: 'item_types'
+    CreateItemScreen:
+        name: 'create_item'
+        id: create_item
+    MobTypesScreen:
+        name: 'mob_types'
+        id: mob_types
+    CreateMobScreen:
+        name: 'create_mob'
+        id: create_mob
+    CreateSpawnerScreen:
+        name: 'create_spawner'
+        id: create_spawner
+
+<FlatTextInput>:
+    ripple_duration_in: .2
+    ripple_duration_out: .3
+

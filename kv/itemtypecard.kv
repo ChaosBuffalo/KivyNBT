@@ -1,0 +1,36 @@
+<ItemTypeCard>:
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+    size_hint: (None, None)
+    width: 128
+    height: 200
+    canvas.before:
+        Color:
+            rgba: app.get_color(['Cyan', '800'])[0:3] + [.5]
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    PixelImage:
+        source: root.item_image
+        allow_stretch: True
+        size_hint: (None, None)
+        size: 64, 64
+        pos_hint: {'x' : ((root.width - 64 - 10) / 2) / root.width }
+    FlatLabel:
+        font_ramp_tuple: ('item_type_cards_2', '1')
+        theme: ('aqua', 'variant_2')
+        valign: 'top'
+        halign: 'center'
+        text_size: self.size
+        text: root.mod_name
+        size_hint_x: .8
+        pos_hint: {'x': .1}
+    FlatButton:
+        text: root.item_name
+        font_ramp_tuple: ('item_type_cards', '1')
+        theme: ('aqua', 'variant_2')
+        valign: 'top'
+        halign: 'center'
+        text_size: self.size
+        on_release: root.callback(root.mod_name + ':' + root.item_name)

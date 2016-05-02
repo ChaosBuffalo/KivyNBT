@@ -1,0 +1,40 @@
+<ItemTypesScreen>:
+    ScrollView:
+        size_hint: (.8, .8)
+        id: sv
+        y: root.height * .15
+        scroll_timeout: 55
+        x: root.width * .1
+        canvas.before:
+            Color:
+                rgba: app.get_color(['Cyan', '800'])[0:3] + [.5]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        StackLayout:
+            orientation: 'lr-tb'
+            id: item_layout
+            padding: 10
+            pos: sv.pos
+            spacing: 10
+            size_hint: (1.0, None)
+            height: self.minimum_height
+    Widget:
+        size_hint: (1.0, .1)
+        canvas.before:
+            Color:
+                rgba: app.get_color(['Cyan', '800'])[0:3] + [.5]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    FlatButton:
+        size_hint: (.15, .08)
+        text: 'Back'
+        font_ramp_tuple: ('itemtypes_back', '1')
+        pos_hint: {'x' : .01, 'y': .01}
+        theme: ('aqua', 'variant_2')
+        valign: 'top'
+        halign: 'center'
+        text_size: self.size
+        on_release: app.change_screen('item_categories')
+            

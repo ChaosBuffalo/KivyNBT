@@ -1,0 +1,234 @@
+<CreateSpawnerScreen>:
+    BoxLayout:
+        size_hint: (1.0, .8)
+        pos_hint: {'y': .15}
+        padding: 10
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: app.get_color(['Cyan', '800'])[0:3] + [.5]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        ScrollView:
+            scroll_timeout: 30
+            id: sv1
+            size_hint: (.5, 1.0)
+            canvas.before:
+                Color:
+                    rgba: app.get_color(['Cyan', '300'])[0:3] + [.75]
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            StackLayout:
+                size_hint: (1.0, None)
+                height: max(self.minimum_height, sv1.height)
+                padding: 10
+                spacing: 10
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Spawn Potentials: '
+                    font_ramp_tuple: ('spawner_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                FlatButton:
+                    size_hint: (.6, None)
+                    height: dp(30)
+                    text: 'Add Mob'
+                    pos_hint: {'x': .3}
+                    font_ramp_tuple: ('spawner_button', '1')
+                    theme: ('aqua', 'variant_2')
+                    valign: 'middle'
+                    halign: 'center'
+                    text_size: self.size
+                    on_release: root.load_mob_spawn()
+                StackLayout:
+                    size_hint: (1.0, None)
+                    height: self.minimum_height
+                    id: potentials_layout
+                    padding: 10
+                    spacing: 10
+        
+        ScrollView:
+            scroll_timeout: 30
+            id: sv2
+            size_hint: (.5, 1.0)
+            canvas.before:
+                Color:
+                    rgba: app.get_color(['Cyan', '300'])[0:3] + [.75]
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            StackLayout:
+                size_hint: (1.0, None)
+                height: max(self.minimum_height, sv2.height)
+                padding: 10
+                spacing: 10
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Spawn Count: '
+                    font_ramp_tuple: ('spawner_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                SliderWithValues:
+                    minimum: 1
+                    maximum: 40
+                    step: 1
+                    id: spawn_count_slider
+                    size_hint: (1.0, None)
+                    height: dp(65)
+                    font_group_id: 'spawner_panel_1_sliders'
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Spawn Range: '
+                    font_ramp_tuple: ('spawner_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                SliderWithValues:
+                    minimum: 1
+                    maximum: 40
+                    step: 1
+                    id: spawn_range_slider
+                    size_hint: (1.0, None)
+                    height: dp(65)
+                    font_group_id: 'spawner_panel_1_sliders'
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Delay: '
+                    font_ramp_tuple: ('spawner_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                SliderWithValues:
+                    minimum: -1
+                    maximum: 10000
+                    step: 1
+                    id: delay_slider
+                    size_hint: (1.0, None)
+                    height: dp(65)
+                    font_group_id: 'spawner_panel_1_sliders'
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Min Delay: '
+                    font_ramp_tuple: ('spawner_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                SliderWithValues:
+                    minimum: 1
+                    maximum: 10000
+                    step: 1
+                    id: min_delay_slider
+                    size_hint: (1.0, None)
+                    height: dp(65)
+                    font_group_id: 'spawner_panel_1_sliders'
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Max Delay: '
+                    font_ramp_tuple: ('spawner_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                SliderWithValues:
+                    minimum: 1
+                    maximum: 10000
+                    step: 1
+                    id: max_delay_slider
+                    size_hint: (1.0, None)
+                    height: dp(65)
+                    font_group_id: 'spawner_panel_1_sliders'
+                NamedCheckBox:
+                    size_hint: (.9, None)
+                    height: dp(45)
+                    font_group_id: 'spawner_panel_1'
+                    name: 'Custom Spawn Rules: '
+                    id: custom_spawn_rules
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Required Player Range: '
+                    font_ramp_tuple: ('spawner_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                SliderWithValues:
+                    minimum: 1
+                    maximum: 1000
+                    step: 1
+                    id: required_player_range
+                    size_hint: (1.0, None)
+                    height: dp(65)
+                    font_group_id: 'spawner_panel_1_sliders'
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Max Nearby Entities: '
+                    font_ramp_tuple: ('spawner_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                SliderWithValues:
+                    minimum: 1
+                    maximum: 100
+                    step: 1
+                    id: max_nearby_entities
+                    size_hint: (1.0, None)
+                    height: dp(65)
+                    font_group_id: 'spawner_panel_1_sliders'
+    Widget:
+        size_hint: (1.0, .1)
+        padding: 10
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: app.get_color(['Cyan', '800'])[0:3] + [.5]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    FlatButton:
+        size_hint: (.15, .08)
+        text: 'Back'
+        font_ramp_tuple: ('create_spawner_button', '1')
+        theme: ('aqua', 'variant_2')
+        pos_hint: {'x' : .01, 'y': .01}
+        valign: 'middle'
+        halign: 'center'
+        text_size: self.size
+        on_release: app.change_screen('home')
+    FlatButton:
+        size_hint: (.15, .08)
+        text: 'Save'
+        font_ramp_tuple: ('create_spawner_button', '1')
+        theme: ('aqua', 'variant_2')
+        pos_hint: {'x' : .65, 'y': .01}
+        valign: 'middle'
+        halign: 'center'
+        text_size: self.size
+        on_release: root.save_file()
+    FlatButton:
+        size_hint: (.15, .08)
+        text: 'Load'
+        font_ramp_tuple: ('create_spawner_button', '1')
+        theme: ('aqua', 'variant_2')
+        pos_hint: {'x' : .82, 'y': .01}
+        valign: 'middle'
+        halign: 'center'
+        text_size: self.size
+        on_release: root.load_file()

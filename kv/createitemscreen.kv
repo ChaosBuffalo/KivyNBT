@@ -1,0 +1,273 @@
+<CreateItemScreen>:
+    BoxLayout:
+        size_hint: (1.0, .8)
+        pos_hint: {'y': .15}
+        padding: 10
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: app.get_color(['Cyan', '800'])[0:3] + [.5]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        ScrollView:
+            scroll_timeout: 30
+            id: sv1
+            size_hint: (.5, 1.0)
+            canvas.before:
+                Color:
+                    rgba: app.get_color(['Cyan', '300'])[0:3] + [.75]
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            StackLayout:
+                size_hint: (1.0, None)
+                height: max(self.minimum_height, sv1.height)
+                padding: 10
+                spacing: 10
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Custom Name: '
+                    font_ramp_tuple: ('item_panel_1', '1')
+                    pos_hint: {'y': .00, 'x': .21}
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                FloatLayout:
+                    size_hint: (1.0, None)
+                    height: dp(70)
+                    FlatTextInput:
+                        id: name_input
+                        size_hint: (.8, .8)
+                        pos_hint: {'x': .1, 'y': .1}
+                        hint_text: 'Custom Name'
+                        focus_next: lore1
+                        write_tab: False
+                        multiline: False
+                        background_color: (1., 1., 1., 0.)
+                        hint_text_color: app.get_color(['Cyan', '200'])[0:3] + [.5]
+                        font_size: dp(20)
+                        cursor_color: app.get_color(['Cyan', '100'])[0:3] + [.75]
+                        foreground_color: app.get_color(['BlueGrey', '900'])[0:3] + [.75]
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Item Damage: '
+                    font_ramp_tuple: ('item_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                SliderWithValues:
+                    minimum: 0
+                    maximum: 5000
+                    id: damage_slider
+                    size_hint: (1.0, None)
+                    height: dp(65)
+                    font_group_id: 'item_panel_1_dmg'
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Lore: '
+                    font_ramp_tuple: ('item_panel_1', '1')
+                    pos_hint: {'y': .00, 'x': .21}
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                FloatLayout:
+                    size_hint: (1.0, None)
+                    height: dp(50)
+                    FlatTextInput:
+                        id: lore1
+                        size_hint: (.8, .8)
+                        pos_hint: {'x': .1, 'y': .1}
+                        hint_text: 'Lore Line 1'
+                        focus_next: lore2
+                        focus_previous: name_input
+                        write_tab: False
+                        multiline: False
+                        background_color: (1., 1., 1., 0.)
+                        hint_text_color: app.get_color(['Cyan', '200'])[0:3] + [.5]
+                        font_size: dp(20)
+                        cursor_color: app.get_color(['Cyan', '100'])[0:3] + [.75]
+                        foreground_color: app.get_color(['BlueGrey', '900'])[0:3] + [.75]
+                FloatLayout:
+                    size_hint: (1.0, None)
+                    height: dp(50)
+                    FlatTextInput:
+                        id: lore2
+                        size_hint: (.8, .8)
+                        pos_hint: {'x': .1, 'y': .1}
+                        hint_text: 'Lore Line 2'
+                        multiline: False
+                        focus_next: lore3
+                        write_tab: False
+                        focus_previous: lore1
+                        background_color: (1., 1., 1., 0.)
+                        hint_text_color: app.get_color(['Cyan', '200'])[0:3] + [.5]
+                        font_size: dp(20)
+                        cursor_color: app.get_color(['Cyan', '100'])[0:3] + [.75]
+                        foreground_color: app.get_color(['BlueGrey', '900'])[0:3] + [.75]
+                FloatLayout:
+                    size_hint: (1.0, None)
+                    height: dp(50)
+                    FlatTextInput:
+                        id: lore3
+                        size_hint: (.8, .8)
+                        pos_hint: {'x': .1, 'y': .1}
+                        hint_text: 'Lore Line 3'
+                        multiline: False
+                        focus_next: lore4
+                        write_tab: False
+                        focus_previous: lore3
+                        background_color: (1., 1., 1., 0.)
+                        hint_text_color: app.get_color(['Cyan', '200'])[0:3] + [.5]
+                        font_size: dp(20)
+                        cursor_color: app.get_color(['Cyan', '100'])[0:3] + [.75]
+                        foreground_color: app.get_color(['BlueGrey', '900'])[0:3] + [.75]
+                FloatLayout:
+                    size_hint: (1.0, None)
+                    height: dp(50)
+                    FlatTextInput:
+                        id: lore4
+                        size_hint: (.8, .8)
+                        pos_hint: {'x': .1, 'y': .1}
+                        hint_text: 'Lore Line 4'
+                        multiline: False
+                        focus_next: name_input
+                        write_tab: False
+                        focus_previous: lore3
+                        background_color: (1., 1., 1., 0.)
+                        hint_text_color: app.get_color(['Cyan', '200'])[0:3] + [.5]
+                        font_size: dp(20)
+                        cursor_color: app.get_color(['Cyan', '100'])[0:3] + [.75]
+                        foreground_color: app.get_color(['BlueGrey', '900'])[0:3] + [.75]
+
+        ScrollView:
+            scroll_timeout: 30
+            id: sv2
+            size_hint: (.5, 1.0)
+            canvas.before:
+                Color:
+                    rgba: app.get_color(['Cyan', '300'])[0:3] + [.75]
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            StackLayout:
+                size_hint: (1.0, None)
+                height: max(self.minimum_height, sv2.height)
+                padding: 10
+                spacing: 10
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Enchants: '
+                    font_ramp_tuple: ('item_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                FlatButton:
+                    size_hint: (.6, None)
+                    height: dp(30)
+                    text: 'Add Enchant'
+                    pos_hint: {'x': .3}
+                    font_ramp_tuple: ('enchant_button', '1')
+                    theme: ('aqua', 'variant_2')
+                    valign: 'middle'
+                    halign: 'center'
+                    text_size: self.size
+                    on_release: root.open_add_enchants()
+                StackLayout:
+                    size_hint: (1.0, None)
+                    height: self.minimum_height
+                    id: enchant_layout
+                    padding: 10
+                    spacing: 10
+                FlatLabel:
+                    size_hint: (1.0, None)
+                    height: dp(30)
+                    text: 'Attributes: '
+                    font_ramp_tuple: ('item_panel_1', '1')
+                    theme: ('aqua', 'variant_1')
+                    valign: 'middle'
+                    halign: 'left'
+                    text_size: self.size
+                FlatButton:
+                    size_hint: (.6, None)
+                    height: dp(30)
+                    text: 'Add Attribute'
+                    pos_hint: {'x': .3}
+                    font_ramp_tuple: ('enchant_button', '1')
+                    theme: ('aqua', 'variant_2')
+                    valign: 'middle'
+                    halign: 'center'
+                    text_size: self.size
+                    on_release: root.open_add_attributes()
+                StackLayout:
+                    size_hint: (1.0, None)
+                    height: self.minimum_height
+                    id: attribute_layout
+                    padding: 10
+                    spacing: 10
+
+
+    Widget:
+        size_hint: (1.0, .1)
+        padding: 10
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: app.get_color(['Cyan', '800'])[0:3] + [.5]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    FlatButton:
+        size_hint: (.15, .08)
+        text: 'Back'
+        font_ramp_tuple: ('create_item_back', '1')
+        theme: ('aqua', 'variant_2')
+        pos_hint: {'x' : .01, 'y': .01}
+        valign: 'middle'
+        halign: 'center'
+        text_size: self.size
+        on_release: app.change_screen('item_types')
+    FlatLabel:
+        size_hint: (.3, .1)
+        text: root.item_name
+        font_ramp_tuple: ('item_name', '1')
+        pos_hint: {'y': .00, 'x': .185}
+        theme: ('aqua', 'variant_2')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    PixelImage:
+        source: root.item_image
+        allow_stretch: True
+        size_hint: (None, None)
+        width: 64
+        height: 64
+        pos_hint: {'x': .50, 'y': ((root.height*.1 - 64) / root.height) /2.}
+    FlatButton:
+        size_hint: (.15, .08)
+        text: 'Save'
+        font_ramp_tuple: ('create_item_back', '1')
+        theme: ('aqua', 'variant_2')
+        pos_hint: {'x' : .65, 'y': .01}
+        valign: 'middle'
+        halign: 'center'
+        text_size: self.size
+        on_release: root.save_file()
+    FlatButton:
+        size_hint: (.15, .08)
+        text: 'Load'
+        font_ramp_tuple: ('create_item_back', '1')
+        theme: ('aqua', 'variant_2')
+        pos_hint: {'x' : .82, 'y': .01}
+        valign: 'middle'
+        halign: 'center'
+        text_size: self.size
+        on_release: root.load_file()

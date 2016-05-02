@@ -1,0 +1,64 @@
+<Divider>:
+    canvas:
+        Color:
+            rgba: app.get_color(('Purple', '500'))[0:3] + [.85]
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<MobItemWidget>:
+    size_hint: (1.0, None)
+    height: self.minimum_height
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(30)
+        text: root.item_name
+        font_ramp_tuple: (root.font_group_id + "_names", '1')
+        theme: ('aqua', 'variant_1')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(30)
+        text: root.display_name
+        font_ramp_tuple: (root.font_group_id + "_display_names", '1')
+        theme: ('aqua', 'variant_2')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(30)
+        text: root.file_name
+        font_ramp_tuple: (root.font_group_id + "_file_names", '1')
+        theme: ('aqua', 'variant_1')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+        shorten: True
+
+<ItemSlotWidget>:
+    size_hint: (1.0, None)
+    height: self.minimum_height
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(35)
+        text: root.slot_name + ":"
+        font_ramp_tuple: (root.font_group_id, '1')
+        theme: ('aqua', 'variant_3')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    StackLayout:
+        size_hint: (1.0, None)
+        height: self.minimum_height
+        padding: dp(5)
+        spacing: dp(10)
+        id: contents
+    StackLayout:
+        size_hint: (1.0, None)
+        height: self.minimum_height
+        padding: dp(5)
+        spacing: dp(10)
+        id: slider_layout

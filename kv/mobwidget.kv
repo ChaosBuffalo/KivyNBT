@@ -1,0 +1,104 @@
+<MobWidget>:
+    size_hint: (1.0, None)
+    height: self.minimum_height
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(30)
+        text: root.mob_name
+        font_ramp_tuple: (root.font_group_id + "_names", '1')
+        theme: ('aqua', 'variant_1')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(30)
+        text: root.display_name
+        font_ramp_tuple: (root.font_group_id + "_display_names", '1')
+        theme: ('aqua', 'variant_2')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(30)
+        text: root.file_name
+        font_ramp_tuple: (root.font_group_id + "_file_names", '1')
+        theme: ('aqua', 'variant_1')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+        shorten: True
+    FlatButton:
+        size_hint: (.8, None)
+        height: dp(30)
+        text: 'X'
+        font_ramp_tuple: (root.font_group_id + "_remove", '1')
+        pos_hint: {'x' : .1}
+        theme: ('aqua', 'variant_2')
+        valign: 'middle'
+        halign: 'center'
+        text_size: self.size
+        on_release: root.remove_self()
+
+<-MobWidgetWithSpawnChance>:
+    size_hint: (1.0, None)
+    height: self.minimum_height
+    spawn_chance: chance_slider.current_value
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(30)
+        text: root.mob_name
+        font_ramp_tuple: (root.font_group_id + "_names", '1')
+        theme: ('aqua', 'variant_1')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(30)
+        text: root.display_name
+        font_ramp_tuple: (root.font_group_id + "_display_names", '1')
+        theme: ('aqua', 'variant_2')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(30)
+        text: root.file_name
+        font_ramp_tuple: (root.font_group_id + "_file_names", '1')
+        theme: ('aqua', 'variant_1')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+        shorten: True
+    FlatLabel:
+        size_hint: (1.0, None)
+        height: dp(30)
+        text: 'Spawn Chance: '
+        font_ramp_tuple: (root.font_group_id + "_spawn_chance", '1')
+        theme: ('aqua', 'variant_1')
+        valign: 'middle'
+        halign: 'left'
+        text_size: self.size
+    SliderWithValues:
+        minimum: 1
+        current: 1
+        maximum: 100
+        id: chance_slider
+        size_hint: (1.0, None)
+        height: dp(65)
+        font_group_id: root.font_group_id + "_slider"
+    FlatButton:
+        size_hint: (.8, None)
+        height: dp(30)
+        text: 'X'
+        font_ramp_tuple: (root.font_group_id + "_remove", '1')
+        pos_hint: {'x' : .1}
+        theme: ('aqua', 'variant_2')
+        valign: 'middle'
+        halign: 'center'
+        text_size: self.size
+        on_release: root.remove_self()
+

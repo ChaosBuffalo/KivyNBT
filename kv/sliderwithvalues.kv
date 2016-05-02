@@ -1,0 +1,45 @@
+<SliderWithValues>:
+    spacing: dp(5)
+    current_value: slider.value
+    FlatButton:
+        text: str(round(root.minimum, 3))
+        size_hint: (.1, 1.0)
+        font_ramp_tuple: (root.font_group_id, '1')
+        text_size: self.size
+        valign: 'middle'
+        halign: 'center'
+        theme: ('aqua', 'values')
+        max_lines: 1
+        alpha: 0.
+        on_release: root.decrement_slider()
+        ripple_duration_in: .08
+        ripple_duration_out: .16
+    FlatSlider:
+        id: slider
+        size_hint: (.5, 1.0)
+        range: (root.minimum, root.maximum)
+        step: root.step
+        theme: ('aqua', 'values')
+    FlatButton:
+        text: str(round(root.maximum, 3))
+        size_hint: (.1, 1.0)
+        font_ramp_tuple: (root.font_group_id, '1')
+        text_size: self.size
+        valign: 'middle'
+        theme: ('aqua', 'values')
+        halign: 'center'
+        max_lines: 1
+        alpha: 0.
+        on_release: root.increment_slider()
+        ripple_duration_in: .08
+        ripple_duration_out: .16
+    FlatLabel:
+        id: value_display
+        text: str(round(root.current_value, 3))
+        size_hint: (.2, 1.0)
+        font_ramp_tuple: (root.font_group_id, '1')
+        text_size: self.size
+        valign: 'middle'
+        theme: ('aqua', 'values')
+        halign: 'center'
+        max_lines: 1
