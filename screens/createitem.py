@@ -44,9 +44,7 @@ class CreateItemScreen(Screen):
 
     def clear_old(self):
         self.ids.enchant_layout.clear_widgets()
-        self.ids.enchant_layout.height = 0
         self.ids.attribute_layout.clear_widgets()
-        self.ids.attribute_layout.height = 0
         self.ids.name_input.text = ''
         self.clear_lore()
 
