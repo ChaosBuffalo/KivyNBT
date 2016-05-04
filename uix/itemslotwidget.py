@@ -78,8 +78,11 @@ class ItemSlotWidget(StackLayout):
             content_layout.add_widget(Divider(size_hint=(.8, None),
                                               height=dp(5)))
             item = self.slot_item
+            name = item.name
+            if name is None:
+                name = ""
             content_layout.add_widget(MobItemWidget(item_name=item.i_id,
-                display_name=item.name, file_name=self.file_name,
+                display_name=name, file_name=self.file_name,
                 font_group_id='item_info'))
             button = FlatButton(
                 font_ramp_tuple=(self.font_group_id + "delete_item", "1"),

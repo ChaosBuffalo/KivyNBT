@@ -120,6 +120,7 @@ def register_mobs():
         'minecraft', 'EntityHorse',
         image=get_texture_location("HorseHead.png", cat='mobs'),
         options=[('Saddle', 'boolean', None, 'Byte'),
+                 ('Tame', 'boolean', None, 'Byte'),
                  ('Age', 'range', (-999999, 999999, 1), 'Int'),
                  ('SkeletonTrap', 'boolean', None, 'Byte'),
                  ('SkeletonTrapTime', 'range', (-999999, 999999, 1), 'Int'),

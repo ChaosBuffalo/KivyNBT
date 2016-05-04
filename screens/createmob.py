@@ -27,7 +27,8 @@ class MobItems(StackLayout):
             slot_wid.delete_item()
         else:
             slot_wid.set_item(item)
-            slot_wid.set_drop_chance(drop_chance)
+            Clock.schedule_once(lambda dt: slot_wid.set_drop_chance(
+                drop_chance))
 
     def clear_slots(self):
         id_list = ['main_hand', 'off_hand', 'chest', 'legs', 'feet', 'head']
@@ -80,7 +81,6 @@ class CreateMobScreen(Screen):
         popup.open()
 
     def add_mob_items(self):
-        self.ids.items_layout.clear_widgets()
         self.mob_items = mob_items = MobItems()
         self.ids.items_layout.add_widget(mob_items)
 
@@ -230,6 +230,7 @@ class CreateMobScreen(Screen):
             wid.font_group_id = 'default'
         self.ids.passenger_layout.clear_widgets()
         self.ids.potion_layout.clear_widgets()
+        self.ids.items_layout.clear_widgets()
         if self.mob_items is not None:
             self.mob_items.clear_slots()
         self.set_name("")
